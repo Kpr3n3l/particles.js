@@ -55,13 +55,15 @@ class Particle {
   }
   
   update() {
-    if (this.x < this.size || this.x + this.size > w) {
-      this.speed.x *= -1;
-    }
+    new Map([
+      ['x', w],
+      ['y', h],
+    ]).forEach((screen, cord) => {
+      if (this[cord] < this.size || this[cord] + this.size > screen) {
+        this.speed[cord] *= -1;
+      }
+    });
     
-    if (this.y < this.size || this.y + this.size > h) {
-      this.speed.y *= -1;
-    }
     
     this.x += this.speed.x;
     this.y += this.speed.y;
@@ -74,7 +76,7 @@ class Particle {
       if (i === particles.indexOf(this) || get_distance(this, particle) > 50) continue;
       
       if (this.x > particle.x) {
-        c.strokeStyle = '#ddd';
+        c.strokeStyle = '#f5f5f5';
         c.lineWidth = 0.3;
         
         c.beginPath();
