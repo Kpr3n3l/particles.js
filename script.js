@@ -10,7 +10,7 @@ const particles = [];
 
 
 function init() {
-  Particle.add(50);
+  Particle.add(100);
   
   loop();
 }
@@ -58,7 +58,8 @@ class Particle {
     new Map([
       ['x', w],
       ['y', h],
-    ]).forEach((screen, cord) => {
+    ])
+    .forEach((screen, cord) => {
       if (this[cord] < this.size || this[cord] + this.size > screen) {
         this.speed[cord] *= -1;
       }
